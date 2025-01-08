@@ -1,19 +1,19 @@
 package com.example.demo.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 import java.time.LocalDateTime;
 
-@Getter @Setter
-@AllArgsConstructor
+@Getter
 @Builder
-public class PostResponse {
+public class AskResponse {
     private Long id;
-    private String title;
+    private String companyName;
+    private String name;
+    private String position;
+    private String phone;
+    private String email;
     private String content;
-    private String authorName;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 } 

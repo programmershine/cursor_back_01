@@ -4,29 +4,25 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "asks")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Post {
+public class Ask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String title;
-
-    @Column(nullable = false, columnDefinition = "TEXT")
+    private String companyName;
+    private String name;
+    private String position;
+    private String phone;
+    private String email;
     private String content;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User author;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

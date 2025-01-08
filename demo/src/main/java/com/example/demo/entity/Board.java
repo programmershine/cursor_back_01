@@ -7,28 +7,21 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users")
+@Table(name = "boards")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
-    private String userId;
-    
-    private String password;
-    private String name;
-    private String phone;
-    private String email;
-    private String zipCode;
-    private String address;
-    private String addressDetail;
-    private String passwordHint;
-    private String passwordHintAnswer;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User author;
+
+    private String content;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
